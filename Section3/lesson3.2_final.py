@@ -12,7 +12,6 @@ class TestAssert(unittest.TestCase):
 
     def fillForm(self, link):
         browser = self.browser
-        browser.implicitly_wait(5)
         browser.get(link)
         
         selectors = [".first_block .first", ".first_block .second", ".first_block .third"]
