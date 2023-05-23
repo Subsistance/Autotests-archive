@@ -21,7 +21,7 @@ class TestAssert(unittest.TestCase):
         time.sleep(1)
         
         # находим элемент, содержащий текст
-        welcome_text = browser.find_element(By.TAG_NAME, "h1")
+        welcome_text = browser.find_element(By.TAG_NAME, "h1").text
         welcome_text_expected = "Congratulations! You have successfully registered!"
         self.assertEqual(welcome_text, welcome_text_expected, "Welcome text should be the same!")
         
@@ -39,7 +39,7 @@ class TestAssert(unittest.TestCase):
         time.sleep(1)
         
         # находим элемент, содержащий текст
-        welcome_text = browser.find_element(By.TAG_NAME, "h1")
+        welcome_text = browser.find_element(By.TAG_NAME, "h1").text
         welcome_text_expected = "Congratulations! You have successfully registered!"
         self.assertEqual(welcome_text, welcome_text_expected, "Welcome text should be the same!")
         
