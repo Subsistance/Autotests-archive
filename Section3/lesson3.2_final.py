@@ -4,12 +4,17 @@ from selenium.webdriver.common.by import By
 import time
 import unittest
 
-browser = webdriver.Chrome()
 
 class TestAssert(unittest.TestCase):
-    def test_1(self):
-        link = "http://suninjuly.github.io/registration1.html"
+
+    def setUp(self):
+        self.browser = webdriver.Chrome()
+
+    def fillForm(self, link):
+        browser = self.browser
+        browser.implicitly_wait(5)
         browser.get(link)
+        
         selectors = [".first_block .first", ".first_block .second", ".first_block .third"]
         for selector in selectors:
             element = browser.find_element(By.CSS_SELECTOR, selector)
@@ -18,30 +23,22 @@ class TestAssert(unittest.TestCase):
         # Отправляем заполненную форму
         button = browser.find_element(By.CSS_SELECTOR, "button.btn")
         button.click()
-        time.sleep(1)
         
         # находим элемент, содержащий текст
         welcome_text = browser.find_element(By.TAG_NAME, "h1").text
-        welcome_text_expected = "Congratulations! You have successfully registered!"
-        self.assertEqual(welcome_text, welcome_text_expected, "Welcome text should be the same!")
+        return welcome_text
         
-    def test_2(self):
-        link = "http://suninjuly.github.io/registration2.html"
-        browser.get(link)
-        selectors = [".first_block .first", ".first_block .second", ".first_block .third"]
-        for selector in selectors:
-            element = browser.find_element(By.CSS_SELECTOR, selector)
-            element.send_keys("test")
-
-        # Отправляем заполненную форму
-        button = browser.find_element(By.CSS_SELECTOR, "button.btn")
-        button.click()
-        time.sleep(1)
+    def testRegistration1(self):
+        link = 'http://suninjuly.github.io/registration1.html'
+        registration_result = self.fillForm(link)
         
-        # находим элемент, содержащий текст
-        welcome_text = browser.find_element(By.TAG_NAME, "h1").text
-        welcome_text_expected = "Congratulations! You have successfully registered!"
-        self.assertEqual(welcome_text, welcome_text_expected, "Welcome text should be the same!")
+        self.assertEqual("Congratulations! You have successfully registered!", registration_result)
+        
+    def testRegistration2(self):
+        link = 'http://suninjuly.github.io/registration2.html'
+        registration_result = self.fillForm(link)
+        
+        self.assertEqual("Congratulations! You have successfully registered!", registration_result)
         
 if __name__ == "__main__":
         unittest.main()
