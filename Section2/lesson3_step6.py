@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 import time
 import math
 
-def calc(x):
+def calculation(x):
   return str(math.log(abs(12*math.sin(int(x)))))
   
 browser = webdriver.Chrome()
@@ -17,9 +17,9 @@ try:
     browser.switch_to.window(new_window)
     
     x = int(browser.find_element(By.ID, "input_value").text)
-    equals = calc(x)
+    result = calculation(x)
     
-    input = browser.find_element(By.ID, 'answer').send_keys(equals)
+    input = browser.find_element(By.ID, 'answer').send_keys(result)
 
     button_second = browser.find_element(By.CSS_SELECTOR, ".btn")
     time.sleep(1)

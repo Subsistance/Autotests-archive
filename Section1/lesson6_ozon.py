@@ -1,3 +1,5 @@
+#! C:\Users\Nick\environments\selenium_env\Scripts\python.exe
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from time import sleep

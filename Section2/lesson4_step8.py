@@ -5,7 +5,7 @@ from selenium import webdriver
 import time
 import math
 
-def calc(x):
+def calculation(x):
   return str(math.log(abs(12*math.sin(int(x)))))
 
 browser = webdriver.Chrome()
@@ -20,8 +20,8 @@ try:
     button.click()
     
     x = int(browser.find_element(By.ID, "input_value").text)
-    equals = calc(x)
-    input = browser.find_element(By.CSS_SELECTOR, "#answer").send_keys(equals)
+    result = calculation(x)
+    input = browser.find_element(By.CSS_SELECTOR, "#answer").send_keys(result)
     buttonSubmit = browser.find_element(By.CSS_SELECTOR, "#solve").click()
     
 

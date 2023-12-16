@@ -17,7 +17,7 @@ try:
     button.click()
 
 finally:
-    time.sleep(10)
+    time.sleep(5)
     # закрываем браузер после всех манипуляций
     browser.quit()
 
