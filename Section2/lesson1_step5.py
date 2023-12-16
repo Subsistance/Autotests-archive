@@ -13,7 +13,7 @@ try:
     browser.get(link)
     x_element = browser.find_element(By.CSS_SELECTOR, '#input_value')
     x = x_element.text
-    y = calc(x)
+    y = calculation(x)
 
     input1 = browser.find_element(By.CSS_SELECTOR, '.form-control').send_keys(y)
     input2 = browser.find_element(By.CSS_SELECTOR, '[type="checkbox"]').click()
